@@ -204,7 +204,7 @@
       <h2>YAY! 🎉</h2>
       <img
         class="fireworks"
-        src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif"
+        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmFsbjIyYnllcTIwamtzMnN4MjZvNncxb2Fmc2hicW5pYnpsdjJscCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cIK6lqkTrFXsRoqwul/giphy.gif"
         alt="Fireworks"
       />
     </section>
@@ -401,10 +401,13 @@ noBtn.addEventListener("click", (e) => {
     yesBtn.style.left = "62%";
 yesBtn.style.top = "50%";
 yesBtn.innerText = "Please ❤️";
+yesBtn.style.fontSize = "24px";
+yesBtn.style.fontWeight = "bold";
+yesBtn.style.backgroundColor = "#ff1f68";
 
 // Grow slightly more
-yesScale += 0.2;
-yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
+yesScale = Math.min(2.5, yesScale + 0.2); // limit to 2.5 scale
+  yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
   }
 });
 
@@ -421,6 +424,7 @@ yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
   </script>
 </body>
 </html>
+
 
 
 
