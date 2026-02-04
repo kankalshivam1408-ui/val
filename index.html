@@ -122,13 +122,15 @@
       display: block;
     }
 
-    .are-you-sure {
-     display: none;
-     margin-top: 14px;
-     font-size: 15px;
-     color: #444;
-     animation: fadeIn 0.4s ease;
-    }
+ .are-you-sure {
+  display: none;
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #d60036;
+  animation: fadeIn 0.4s ease;
+  text-align: center;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.96); }
@@ -190,11 +192,13 @@
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
     </section>
+    <div class="are-you-sure" id="areYouSure"></div>
 
     <!-- HINT -->
     <div class="hint" id="hint">“No” seems a bit shy 😈</div>
 
-    <div class="are-you-sure" id="areYouSure">Are you sure? 😢</div>
+
+    
 
     <section class="result" id="result">
       <h2>YAY! 🎉</h2>
@@ -270,39 +274,72 @@
       return Math.max(min, Math.min(max, n));
     }
 
-    function moveNo(px, py) {
-      const z = zone.getBoundingClientRect();
-      const b = noBtn.getBoundingClientRect();
+    // function moveNo(px, py) {
+    //   const z = zone.getBoundingClientRect();
+    //   const b = noBtn.getBoundingClientRect();
 
-      let dx = (b.left + b.width / 2) - px;
-      let dy = (b.top + b.height / 2) - py;
-      let mag = Math.hypot(dx, dy) || 1;
-      dx /= mag;
-      dy /= mag;
+    //   let dx = (b.left + b.width / 2) - px;
+    //   let dy = (b.top + b.height / 2) - py;
+    //   let mag = Math.hypot(dx, dy) || 1;
+    //   dx /= mag;
+    //   dy /= mag;
 
-      let newLeft = (b.left - z.left) + dx * 150;
-      let newTop  = (b.top - z.top) + dy * 150;
+    //   let newLeft = (b.left - z.left) + dx * 150;
+    //   let newTop  = (b.top - z.top) + dy * 150;
 
-      newLeft = clamp(newLeft, 0, z.width - b.width);
-      newTop  = clamp(newTop, 0, z.height - b.height);
+    //   newLeft = clamp(newLeft, 0, z.width - b.width);
+    //   newTop  = clamp(newTop, 0, z.height - b.height);
 
-      noBtn.style.left = newLeft + "px";
-      noBtn.style.top = newTop + "px";
-      noBtn.style.transform = "none";
+    //   noBtn.style.left = newLeft + "px";
+    //   noBtn.style.top = newTop + "px";
+    //   noBtn.style.transform = "none";
 
-      growYes();
-    }
+    //   growYes();
+    // }
 
-    zone.addEventListener("pointermove", e => {
-      const b = noBtn.getBoundingClientRect();
-      const d = Math.hypot(
-        (b.left + b.width / 2) - e.clientX,
-        (b.top + b.height / 2) - e.clientY
-      );
-      if (d < 140) moveNo(e.clientX, e.clientY);
-    });
+    // zone.addEventListener("pointermove", e => {
+    //   const b = noBtn.getBoundingClientRect();
+    //   const d = Math.hypot(
+    //     (b.left + b.width / 2) - e.clientX,
+    //     (b.top + b.height / 2) - e.clientY
+    //   );
+    //   // if (d < 140) moveNo(e.clientX, e.clientY);
+    // });
 
    let noClickCount = 0;
+const areYouSureText = [
+  "Are you sure? 😢",
+  "Are you really sure? 😟",
+  "Think again... 😬",
+  "This hurts 😖",
+  "Too late 😅"
+];
+
+// noBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   if (noClickCount < areYouSureText.length) {
+//     // Shrink the button
+//     const scale = 1 - noClickCount * 0.15;
+//     noBtn.style.transform = `scale(${Math.max(scale, 0.4)})`;
+
+//     // Show or update the message
+//     const msg = document.getElementById("areYouSure");
+//     msg.style.display = "block";
+//     msg.innerText = areYouSureText[noClickCount];
+
+//     noClickCount++;
+
+//     // After final message, disable button
+//     if (noClickCount === areYouSureText.length) {
+//       noBtn.disabled = true;
+//       noBtn.style.opacity = 0.6;
+//       noBtn.style.cursor = "not-allowed";
+//     }
+//   }
+// });
+
+    let noClickCount = 0;
 const areYouSureText = [
   "Are you sure? 😢",
   "Are you really sure? 😟",
@@ -315,25 +352,23 @@ noBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (noClickCount < areYouSureText.length) {
-    // Shrink the button
-    const scale = 1 - noClickCount * 0.15;
-    noBtn.style.transform = `scale(${Math.max(scale, 0.4)})`;
-
-    // Show or update the message
     const msg = document.getElementById("areYouSure");
     msg.style.display = "block";
     msg.innerText = areYouSureText[noClickCount];
-
     noClickCount++;
 
-    // After final message, disable button
+    // Slight shrink effect
+    const scale = 1 - noClickCount * 0.1;
+    noBtn.style.transform = `scale(${Math.max(scale, 0.5)})`;
+
     if (noClickCount === areYouSureText.length) {
       noBtn.disabled = true;
-      noBtn.style.opacity = 0.6;
+      noBtn.style.opacity = 0.5;
       noBtn.style.cursor = "not-allowed";
     }
   }
 });
+
 
 
     /* ---------- YES CLICK ---------- */
@@ -347,6 +382,7 @@ noBtn.addEventListener("click", (e) => {
   </script>
 </body>
 </html>
+
 
 
 
