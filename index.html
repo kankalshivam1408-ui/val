@@ -265,16 +265,8 @@
     /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
-  if (yesScale < 5) {
-    yesScale += 0.5; // Increase growth step
-    yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
-  } else {
-    // Optional: If you want it to take full space and center everything else
-    yesBtn.style.width = "90vw";
-    yesBtn.style.height = "20vh";
-    yesBtn.style.fontSize = "2em";
-    yesBtn.innerText = "I knew it ❤️";
-  }
+ yesScale = Math.min(2.2, yesScale + 0.1); 
+      yesBtn.style.transform = translateY(-50%) scale(${yesScale});
 }
 
     /* ---------- NO BUTTON RUNS AWAY ---------- */
@@ -408,8 +400,8 @@ noBtn.addEventListener("click", (e) => {
     // Move and grow "Yes" button to take its place
     yesBtn.style.left = "62%";
     yesBtn.style.top = "50%";
-    yesBtn.style.transform = "translateY(-50%) scale(2)";
-    yesBtn.innerText = "Come here ❤️";
+    yesBtn.style.transform = "translateY(-50%) scale(1.5)";
+    yesBtn.innerText = "Please ❤️";
   }
 });
 
@@ -426,6 +418,7 @@ noBtn.addEventListener("click", (e) => {
   </script>
 </body>
 </html>
+
 
 
 
