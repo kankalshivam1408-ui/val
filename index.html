@@ -265,9 +265,17 @@
     /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
-      yesScale = Math.min(3.2, yesScale + 0.1);
-      yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
-    }
+  if (yesScale < 5) {
+    yesScale += 0.5; // Increase growth step
+    yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
+  } else {
+    // Optional: If you want it to take full space and center everything else
+    yesBtn.style.width = "90vw";
+    yesBtn.style.height = "20vh";
+    yesBtn.style.fontSize = "2em";
+    yesBtn.innerText = "I knew it ❤️";
+  }
+}
 
     /* ---------- NO BUTTON RUNS AWAY ---------- */
     function clamp(n, min, max) {
@@ -384,6 +392,7 @@ noBtn.addEventListener("click", (e) => {
   </script>
 </body>
 </html>
+
 
 
 
