@@ -265,7 +265,7 @@
     /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
- yesScale = Math.min(2.2, yesScale + 0.1); 
+ yesScale = Math.min(2.5, yesScale + 0.1); 
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
 }
 
@@ -387,6 +387,9 @@ noBtn.addEventListener("click", (e) => {
   msg.innerText = areYouSureText[Math.min(noClickCount, areYouSureText.length - 1)];
   hint.style.display = "none";
 
+growYes();
+
+
   // Shrink "No" button a little each time
   const scale = 1 - noClickCount * 0.1;
   noBtn.style.transform = `scale(${Math.max(scale, 0.5)})`;
@@ -405,9 +408,6 @@ yesBtn.style.fontSize = "24px";
 yesBtn.style.fontWeight = "bold";
 yesBtn.style.backgroundColor = "#ff1f68";
 
-// Grow slightly more
-yesScale = Math.min(2.5, yesScale + 0.2); // limit to 2.5 scale
-  yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
   }
 });
 
@@ -424,6 +424,7 @@ yesScale = Math.min(2.5, yesScale + 0.2); // limit to 2.5 scale
   </script>
 </body>
 </html>
+
 
 
 
