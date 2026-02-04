@@ -204,7 +204,7 @@
       <h2>YAY! 🎉</h2>
       <img
         class="fireworks"
-        src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gi"
+        src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
         alt="Fireworks"
       />
     </section>
@@ -355,6 +355,7 @@ noBtn.addEventListener("click", (e) => {
     const msg = document.getElementById("areYouSure");
     msg.style.display = "block";
     msg.innerText = areYouSureText[noClickCount];
+    hint.style.display = "none"; // ✅ hide the original hint
     noClickCount++;
 
     // Slight shrink effect
@@ -371,6 +372,7 @@ noBtn.addEventListener("click", (e) => {
 
 
 
+
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
@@ -382,6 +384,7 @@ noBtn.addEventListener("click", (e) => {
   </script>
 </body>
 </html>
+
 
 
 
