@@ -347,37 +347,71 @@
 //   }
 // });
 
-    let noClickCount = 0;
+//     let noClickCount = 0;
+// const areYouSureText = [
+//   "Are you sure? 😢",
+//   "Are you really sure? 😟",
+//   "Think again... 😬",
+//   "This hurts 😖",
+//   "Too late 😅"
+// ];
+
+// noBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   if (noClickCount < areYouSureText.length) {
+//     const msg = document.getElementById("areYouSure");
+//     msg.style.display = "block";
+//     msg.innerText = areYouSureText[noClickCount];
+//     hint.style.display = "none"; // ✅ hide the original hint
+//     noClickCount++;
+
+//     // Slight shrink effect
+//     const scale = 1 - noClickCount * 0.1;
+//     noBtn.style.transform = `scale(${Math.max(scale, 0.5)})`;
+
+//     if (noClickCount === areYouSureText.length) {
+//       noBtn.disabled = true;
+//       noBtn.style.opacity = 0.5;
+//       noBtn.style.cursor = "not-allowed";
+//     }
+//   }
+// });
+
+let noClickCount = 0;
 const areYouSureText = [
   "Are you sure? 😢",
   "Are you really sure? 😟",
-  "Think again... 😬",
-  "This hurts 😖",
-  "Too late 😅"
+  "Ek baar phir sochle 😬",
+  "Big Boss hurt ho raha hai! 😖",
+  "Too Late now, this is happening! ❤️"
 ];
 
 noBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (noClickCount < areYouSureText.length) {
-    const msg = document.getElementById("areYouSure");
-    msg.style.display = "block";
-    msg.innerText = areYouSureText[noClickCount];
-    hint.style.display = "none"; // ✅ hide the original hint
-    noClickCount++;
+  const msg = document.getElementById("areYouSure");
+  msg.style.display = "block";
+  msg.innerText = areYouSureText[Math.min(noClickCount, areYouSureText.length - 1)];
+  hint.style.display = "none";
 
-    // Slight shrink effect
-    const scale = 1 - noClickCount * 0.1;
-    noBtn.style.transform = `scale(${Math.max(scale, 0.5)})`;
+  // Shrink "No" button a little each time
+  const scale = 1 - noClickCount * 0.1;
+  noBtn.style.transform = `scale(${Math.max(scale, 0.5)})`;
 
-    if (noClickCount === areYouSureText.length) {
-      noBtn.disabled = true;
-      noBtn.style.opacity = 0.5;
-      noBtn.style.cursor = "not-allowed";
-    }
+  noClickCount++;
+
+  if (noClickCount === areYouSureText.length) {
+    // Hide "No" button
+    noBtn.style.display = "none";
+
+    // Move and grow "Yes" button to take its place
+    yesBtn.style.left = "62%";
+    yesBtn.style.top = "50%";
+    yesBtn.style.transform = "translateY(-50%) scale(2)";
+    yesBtn.innerText = "Come here ❤️";
   }
 });
-
 
 
 
@@ -392,6 +426,7 @@ noBtn.addEventListener("click", (e) => {
   </script>
 </body>
 </html>
+
 
 
 
